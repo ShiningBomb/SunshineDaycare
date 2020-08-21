@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200820214259) do
+ActiveRecord::Schema.define(version: 20200821134234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "programs", force: :cascade do |t|
+    t.string "name"
+    t.integer "from_age"
+    t.integer "to_age"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "weekly_schedules", force: :cascade do |t|
     t.datetime "start_date"
