@@ -17,13 +17,31 @@
  @import "bootstrap";
 
  header {
-     background-color: yellow;
+    background-color: #8b18ce;
+ }
+
+ body {
+    background-color: yellow;
  }
 
  .main-container{
     padding: 40px;
     margin-top: 30px;
-    min-height: 800px;
-    border: 2px solid purple;
+    border: 3px solid black;
     border-radius: 5px;
+    background-color: #f3d36b;
+    box-shadow: 5px 10px;
  }
+
+ 
+.cardbox {
+    margin: 10px;
+    padding: 10px;
+    width: 220px;
+    height: 150px;
+    float: left;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: #7fd8fc;
+    box-shadow: 5px 10px;
+}

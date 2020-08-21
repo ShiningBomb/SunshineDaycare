@@ -13,7 +13,7 @@ class WeeklySchedulesController < ApplicationController
     end
 
     if @weekly_schedule.save
-      redirect_to weekly_schedules_index_path
+      redirect_to weekly_schedules_path
     end
   end
 end

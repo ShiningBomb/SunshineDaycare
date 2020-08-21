@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'weekly_schedules/index'
-  get 'weekly_schedules/create'
+  resources :weekly_schedules, only: [:index, :create]
+  resources :programs, only: [:index, :new, :create, :edit, :update]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
