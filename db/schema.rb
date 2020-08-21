@@ -10,10 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200821134234) do
+ActiveRecord::Schema.define(version: 20200821220727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activities", force: :cascade do |t|
+    t.string "name"
+    t.integer "location"
+    t.integer "category"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.bigint "daily_schedule_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["daily_schedule_id"], name: "index_activities_on_daily_schedule_id"
+  end
+
+  create_table "daily_schedules", force: :cascade do |t|
+    t.datetime "date"
+    t.bigint "weekly_schedule_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["weekly_schedule_id"], name: "index_daily_schedules_on_weekly_schedule_id"
+  end
 
   create_table "programs", force: :cascade do |t|
     t.string "name"
@@ -29,4 +49,6 @@ ActiveRecord::Schema.define(version: 20200821134234) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "activities", "daily_schedules"
+  add_foreign_key "daily_schedules", "weekly_schedules"
 end
