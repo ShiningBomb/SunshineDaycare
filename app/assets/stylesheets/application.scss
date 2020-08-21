@@ -45,3 +45,23 @@
     background-color: #7fd8fc;
     box-shadow: 5px 10px;
 }
+
+.cardbox-active {
+   background-color: #a771da;
+}
+
+.left-master {
+   padding-right: 20px; 
+   border-right: 3px solid black;
+
+  a {
+      color: #000000;
+      text-decoration: none;
+  }
+  
+  a:hover {
+       color:#000000; 
+       text-decoration:none; 
+       cursor:pointer;  
+  }
+}

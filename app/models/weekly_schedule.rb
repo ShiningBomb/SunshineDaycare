@@ -1,15 +1,18 @@
 class WeeklySchedule < ApplicationRecord
   has_many :daily_schedules
+  
   before_validation :init_start_date
-  after_create :init_daily_schedules
+
   validates :start_date, :presence => true
 
+  after_create :init_daily_schedules
+
   def init_start_date
-    start_date = Date.today.beginning_of_week
+    self.start_date = Date.today.beginning_of_week
     last_week = WeeklySchedule.order("start_date").last
     
     if last_week
-      start_date = last_week.start_date + 7.days
+      self.start_date = last_week.start_date + 7.days
     end 
   end
 
