@@ -1,0 +1,12 @@
+<%= link_to "Add new week", weekly_schedules_create_path, class:"btn btn-outline-primary float-right"%>
+<h3>Weekly Schedules</h3>
+<hr>
+<ul>
+  <% @weekly_schedules.each do |week| %>
+    <li>
+      <span>Week #<%= week.start_date.strftime('%Y-%m-%d') %></span>
+      <a href="#">Config</a>
+      <a href="#">Publish</a>
+    </li>
+  <% end %>
+</ul>
