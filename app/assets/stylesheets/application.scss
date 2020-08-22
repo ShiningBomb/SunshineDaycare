@@ -61,6 +61,10 @@
     }
 }
 
+.cardbox-hover:hover {
+   background-color: #d0a9f1;
+}
+
 .cardbox.cardbox-small {
    width: 160px;
    height: 100px;
@@ -69,6 +73,12 @@
 .cardbox.cardbox-wide {
    width: 48%;
    height: 120px;
+}
+
+.cardbox.cardbox-center {
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 
 .cardbox-block {
