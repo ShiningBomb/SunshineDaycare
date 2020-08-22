@@ -1,4 +1,4 @@
-class Manager::DailySchedulesController < ApplicationController
+class Manager::DailySchedulesController < ManagerController
   def edit
     @program = Program.find(params[:program_id])
     @daily_schedule = DailySchedule.find(params[:id])

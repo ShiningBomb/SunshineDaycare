@@ -1,4 +1,4 @@
-class Manager::ActivitiesController < ApplicationController
+class Manager::ActivitiesController < ManagerController 
   def new
     @program = Program.find(params[:program_id])
     @weekly_schedule = @program.weekly_schedules.find(params[:weekly_schedule_id])

@@ -1,4 +1,4 @@
-class Manager::WeeklySchedulesController < ApplicationController
+class Manager::WeeklySchedulesController < ManagerController
   def index
     @program = Program.find(params[:program_id])
     @weekly_schedules = @program.weekly_schedules.order(:start_date).all

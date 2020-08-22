@@ -16,13 +16,28 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-              
-
+              <li class="nav-item">
+                <a class="nav-link" href="/manager/programs">Programs</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Employees</a>
+              </li>
             </ul>
           </div>
           <ul class="navbar-nav navbar-right">
-            
-            
+            <li class="nav-item">
+              <a class="nav-link" href="#">Logged in as Manager</a>
+            </li>
+            <!--
+            <% if parent_signed_in? %>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Logged in as <%= current_parent.email %></a>
+              </li>
+            <% end %>
+            <li class="nav-item">
+              <%= link_to "Logout", destroy_parent_session_path(), method:"delete", class:"nav-link" %>
+            </li>
+            -->
           </ul>
         </div>
       </nav>

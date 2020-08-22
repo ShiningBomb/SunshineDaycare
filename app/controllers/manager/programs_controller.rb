@@ -1,4 +1,4 @@
-class Manager::ProgramsController < ApplicationController
+class Manager::ProgramsController < ManagerController
   def index
     @programs = Program.all
   end
