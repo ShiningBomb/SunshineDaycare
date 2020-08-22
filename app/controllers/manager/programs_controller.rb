@@ -1,4 +1,4 @@
-class ProgramsController < ApplicationController
+class Manager::ProgramsController < ApplicationController
   def index
     @programs = Program.all
   end
@@ -11,7 +11,7 @@ class ProgramsController < ApplicationController
     @program = Program.new(program_params)
 
     if @program.save
-      redirect_to programs_path
+      redirect_to manager_programs_path
     else
       render 'new'
     end
@@ -24,7 +24,7 @@ class ProgramsController < ApplicationController
   def update
     @program = Program.find(params[:id])
     if @program.update(program_params)
-      redirect_to programs_path
+      redirect_to manager_programs_path
     else
       render 'edit'
     end

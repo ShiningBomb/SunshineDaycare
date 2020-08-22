@@ -1,4 +1,4 @@
-<%= simple_form_for [@program,@weekly_schedule,@daily_schedule,@activity] do |f| %>
+<%= simple_form_for [:manager,@program,@weekly_schedule,@daily_schedule,@activity] do |f| %>
   <%= f.input :name %>
   <%= f.input :location, collection: Activity.locations.keys %>
   <%= f.input :category, collection: Activity.categories.keys %>

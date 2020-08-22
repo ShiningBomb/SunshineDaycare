@@ -1,4 +1,4 @@
-class ActivitiesController < ApplicationController
+class Manager::ActivitiesController < ApplicationController
   def new
     @program = Program.find(params[:program_id])
     @weekly_schedule = @program.weekly_schedules.find(params[:weekly_schedule_id])
@@ -13,7 +13,7 @@ class ActivitiesController < ApplicationController
     @activity = @daily_schedule.activities.new(activity_params)
 
     if @activity.save
-      redirect_to edit_program_weekly_schedule_daily_schedule_path(@program, @daily_schedule.weekly_schedule, @daily_schedule)
+      redirect_to edit_manager_program_weekly_schedule_daily_schedule_path(@program, @daily_schedule.weekly_schedule, @daily_schedule)
     else
       render 'new'
     end
@@ -33,7 +33,7 @@ class ActivitiesController < ApplicationController
     @activity = Activity.find(params[:id])
 
     if @activity.update(activity_params)
-      redirect_to edit_program_weekly_schedule_daily_schedule_path(@program, @daily_schedule.weekly_schedule, @daily_schedule)
+      redirect_to edit_manager_program_weekly_schedule_daily_schedule_path(@program, @daily_schedule.weekly_schedule, @daily_schedule)
     else
       render 'edit'
     end

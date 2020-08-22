@@ -1,4 +1,4 @@
-<%= simple_form_for @program do |f| %>
+<%= simple_form_for [:manager,@program] do |f| %>
   <%= f.input :name %>
   <%= f.input :from_age %>
   <%= f.input :to_age %>

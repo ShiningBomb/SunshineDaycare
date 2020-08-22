@@ -1,4 +1,4 @@
-class WeeklySchedulesController < ApplicationController
+class Manager::WeeklySchedulesController < ApplicationController
   def index
     @program = Program.find(params[:program_id])
     @weekly_schedules = @program.weekly_schedules.order(:start_date).all
@@ -9,7 +9,7 @@ class WeeklySchedulesController < ApplicationController
     @weekly_schedule = @program.weekly_schedules.new()
 
     if @weekly_schedule.save
-      redirect_to program_weekly_schedules_path(@program)
+      redirect_to manager_program_weekly_schedules_path(@program)
     end
   end
 
@@ -17,6 +17,6 @@ class WeeklySchedulesController < ApplicationController
     @program = Program.find(params[:program_id])
     @weekly_schedule = @program.weekly_schedules.find(params[:id])
     @weekly_schedule.publish()
-    redirect_to program_weekly_schedules_path(@program)
+    redirect_to manager_program_weekly_schedules_path(@program)
   end
 end

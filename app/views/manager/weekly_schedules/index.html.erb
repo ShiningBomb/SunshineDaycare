@@ -1,12 +1,12 @@
-<%= link_to "Back", programs_path() %>
+<%= link_to "Back", manager_programs_path() %>
 <br>
-<%= link_to "Add new week", program_weekly_schedules_path(@program), method:'post', class:"btn btn-primary float-right"%>
+<%= link_to "Add new week", manager_program_weekly_schedules_path(@program), method:'post', class:"btn btn-primary float-right"%>
 <h3>Weekly Schedules for <%= @program.name %></h3>
 <hr>
 <div class="clearfix">
   <% @weekly_schedules.each do |week| %>
     <div class="cardbox">
-      <%= link_to "Publish", edit_program_weekly_schedule_daily_schedule_path(@program, week, week.daily_schedules.first), class:"btn btn-outline-primary float-right"%>
+      <%= link_to "Publish", edit_manager_program_weekly_schedule_daily_schedule_path(@program, week, week.daily_schedules.first), class:"btn btn-outline-primary float-right"%>
       <div><b>Week #<%= week.start_date.strftime('%Y-%m-%d') %></b></div>
       <% if week.is_published %>
         <div class="badge badge-pill badge-success">Published</div>

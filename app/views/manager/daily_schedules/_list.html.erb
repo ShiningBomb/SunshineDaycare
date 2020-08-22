@@ -1,5 +1,5 @@
 <% @weekly_schedule.daily_schedules.each do |day| %>
-  <%= link_to edit_program_weekly_schedule_daily_schedule_path(@program, @weekly_schedule, day) do%>
+  <%= link_to edit_manager_program_weekly_schedule_daily_schedule_path(@program, @weekly_schedule, day) do%>
     <div class="cardbox cardbox-small <%= 'cardbox-active' if @daily_schedule == day %>">
       <div><b><%= day.date.strftime('%A, %Y-%m-%d') %></b></div>
     </div>
