@@ -33,6 +33,15 @@
     box-shadow: 5px 10px;
  }
 
+ .form-control {  
+   border: 3px solid black;
+   border-radius: 5px;
+ }
+ 
+ .form-group{  
+   font-weight: bold;
+ }
+
  
 .cardbox {
     margin: 10px;
@@ -68,3 +77,4 @@
 .new-activity-form {
    padding-left: 15px;
 }
+

@@ -2,30 +2,12 @@
 <hr>
 <div class="clearfix">
   <div class="row d-flex justify-content-center">
-  <div>
-    <% @weekly_schedule.daily_schedules.each do |day| %>
-        <%= link_to edit_weekly_schedule_daily_schedule_path(@weekly_schedule, day) do%>
-          <div class="cardbox cardbox-small <%= 'cardbox-active' if @daily_schedule == day %>">
-            <div><b><%= day.date.strftime('%A, %Y-%m-%d') %></b></div>
-          </div>
-        <% end %>
-    <% end %>
-    </div>
+    <%= render 'list' %>
   </div>
   <br>
   <div class="row">
     <div class="col-lg-12">
-      <%= link_to "Add new activity", new_weekly_schedule_daily_schedule_activity_path(@weekly_schedule, @daily_schedule), class:"btn btn-primary float-right"%>
-      <h4>Activities</h4>
-      <% @daily_schedule.activities.where.not(id: nil).each do |activity| %>
-        <%= link_to edit_weekly_schedule_daily_schedule_activity_path(@weekly_schedule, @daily_schedule, activity) do%>
-          <div class="cardbox cardbox-block">
-            <div><b><%= activity.name %></b></div>
-            <div><%= activity.start_time %></div>
-            <div><%= activity.end_time %></div>
-          </div>
-        <% end %>
-      <% end %>
+      <%= render 'activities/list' %>
     </div>
   </div>
 </div>
