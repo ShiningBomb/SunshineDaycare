@@ -4,8 +4,8 @@
 <div class="clearfix">
   <% @programs.each do |program| %>
     <div class="cardbox cardbox-wide">
-      <%= link_to "Edit", edit_program_path(program), class:"btn btn-outline-primary float-right"%>
-      <%= link_to "Scheduling", edit_program_path(program), class:"btn btn-primary  float-right"%>
+      <%= link_to "Edit", edit_program_path(program), class:"btn btn-outline-primary float-right" %>
+      <%= link_to "Scheduling", program_weekly_schedules_path(program), class:"btn btn-primary float-right"%>
       <div><b><%= program.name %></b></div>
       <div>From age: <%= program.from_age %></div>
       <div>To age: <%= program.to_age %></div>

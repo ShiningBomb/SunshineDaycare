@@ -1,19 +1,22 @@
 class WeeklySchedulesController < ApplicationController
   def index
-    @weekly_schedules = WeeklySchedule.order(:start_date).all
+    @program = Program.find(params[:program_id])
+    @weekly_schedules = @program.weekly_schedules.order(:start_date).all
   end
 
   def create
-    @weekly_schedule = WeeklySchedule.new()
+    @program = Program.find(params[:program_id])
+    @weekly_schedule = @program.weekly_schedules.new()
 
     if @weekly_schedule.save
-      redirect_to weekly_schedules_path
+      redirect_to program_weekly_schedules_path(@program)
     end
   end
 
   def publish
-    @weekly_schedule = WeeklySchedule.find(params[:id])
+    @program = Program.find(params[:program_id])
+    @weekly_schedule = @program.weekly_schedules.find(params[:id])
     @weekly_schedule.publish()
-    redirect_to weekly_schedules_path  
+    redirect_to program_weekly_schedules_path(@program)
   end
 end
