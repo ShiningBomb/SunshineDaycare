@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  get 'daily_schedule/edit'
-
-  resources :weekly_schedules, only: [:index, :create, :edit] do
-    resources :daily_schedules, only: [:edit]
+  resources :weekly_schedules, only: [:index, :create] do
+    resources :daily_schedules, only: [:edit] do
+      resources :activities, only: [:new, :create, :edit, :update]
+    end
   end
   resources :programs, only: [:index, :new, :create, :edit, :update]
 
