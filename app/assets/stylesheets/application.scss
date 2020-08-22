@@ -55,11 +55,20 @@
     box-shadow: 5px 10px;
     color: #000000;
     text-decoration: none;
+
+    .btn {
+       margin-left: 10px;
+    }
 }
 
 .cardbox.cardbox-small {
    width: 160px;
    height: 100px;
+}
+
+.cardbox.cardbox-wide {
+   width: 48%;
+   height: 120px;
 }
 
 .cardbox-block {

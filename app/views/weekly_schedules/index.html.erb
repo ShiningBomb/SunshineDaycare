@@ -6,6 +6,9 @@
     <div class="cardbox">
       <%= link_to "Publish", edit_weekly_schedule_daily_schedule_path(week, week.daily_schedules.first), class:"btn btn-outline-primary float-right"%>
       <div><b>Week #<%= week.start_date.strftime('%Y-%m-%d') %></b></div>
+      <% if week.is_published %>
+        <div class="badge badge-pill badge-success">Published</div>
+      <% end %>
     </div>
   <% end %>
 </div>

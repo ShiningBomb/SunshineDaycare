@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200822172115) do
+ActiveRecord::Schema.define(version: 20200822185323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,8 +47,13 @@ ActiveRecord::Schema.define(version: 20200822172115) do
     t.datetime "start_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_published"
+    t.datetime "published_at"
+    t.bigint "program_id"
+    t.index ["program_id"], name: "index_weekly_schedules_on_program_id"
   end
 
   add_foreign_key "activities", "daily_schedules"
   add_foreign_key "daily_schedules", "weekly_schedules"
+  add_foreign_key "weekly_schedules", "programs"
 end

@@ -10,4 +10,10 @@ class WeeklySchedulesController < ApplicationController
       redirect_to weekly_schedules_path
     end
   end
+
+  def publish
+    @weekly_schedule = WeeklySchedule.find(params[:id])
+    @weekly_schedule.publish()
+    redirect_to weekly_schedules_path  
+  end
 end

@@ -1,11 +1,17 @@
 class WeeklySchedule < ApplicationRecord
+  belongs_to :program
   has_many :daily_schedules
   
-  before_validation :init_start_date
-
   validates :start_date, :presence => true
 
+  before_validation :init_start_date
   after_create :init_daily_schedules
+  
+  def publish
+    self.update(:is_published => true, :published_at => DateTime.now)
+  end
+
+  private
 
   def init_start_date
     self.start_date = Date.today.beginning_of_week

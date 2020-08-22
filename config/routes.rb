@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :weekly_schedules, only: [:index, :create] do
+
+  post '/weekly_schedules/:id/publish', to: 'weekly_schedules#publish', as: 'publish_weekly_schedule'
+
+  resources :weekly_schedules, only: [:index, :create, :publish] do
     resources :daily_schedules, only: [:edit] do
       resources :activities, only: [:new, :create, :edit, :update]
     end

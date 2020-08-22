@@ -1,8 +1,8 @@
 <%= simple_form_for [@weekly_schedule,@daily_schedule,@activity] do |f| %>
   <%= f.input :name %>
-  <%= f.input :location %>
+  <%= f.input :location, collection: Activity.locations.keys %>
+  <%= f.input :category, collection: Activity.categories.keys %>
   <%= f.input :start_time %>
-  <%= f.input :category %>
   <%= f.input :end_time %>
   <%= f.button :submit, class: 'btn btn-primary'  %>
 <% end %>
