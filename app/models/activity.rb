@@ -1,5 +1,6 @@
 class Activity < ApplicationRecord
   belongs_to :daily_schedule
+  belongs_to :caretaker
   validates :name, :start_time, :end_time, :location, :category, :presence => true
   validates :end_time, after_date: :start_time
 

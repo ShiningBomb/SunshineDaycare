@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200823195347) do
+ActiveRecord::Schema.define(version: 20200823202810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20200823195347) do
     t.bigint "daily_schedule_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "caretaker_id"
+    t.index ["caretaker_id"], name: "index_activities_on_caretaker_id"
     t.index ["daily_schedule_id"], name: "index_activities_on_daily_schedule_id"
   end
 
@@ -109,6 +111,7 @@ ActiveRecord::Schema.define(version: 20200823195347) do
     t.index ["program_id"], name: "index_weekly_schedules_on_program_id"
   end
 
+  add_foreign_key "activities", "caretakers"
   add_foreign_key "activities", "daily_schedules"
   add_foreign_key "children", "parents"
   add_foreign_key "children", "programs"

@@ -5,4 +5,8 @@ class Caretaker < ApplicationRecord
   has_many :posts
 
   validates :email, uniqueness: true
+
+  def to_s
+    email
+  end
 end

@@ -42,6 +42,6 @@ class Manager::ActivitiesController < ManagerController
   private
 
   def activity_params
-    params.require(:activity).permit(:name, :location, :category, :start_time, :end_time)
+    params.require(:activity).permit(:caretaker_id, :name, :location, :category, :start_time, :end_time)
   end
 end

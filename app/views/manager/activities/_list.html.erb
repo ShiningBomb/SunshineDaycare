@@ -4,7 +4,7 @@
   <%= link_to edit_manager_program_weekly_schedule_daily_schedule_activity_path(@program, @weekly_schedule, @daily_schedule, activity) do%>
     <div class="cardbox cardbox-block <%= 'cardbox-active' if @activity == activity %>">
       <div><%= activity.start_time.strftime('%I:%M%p') %> - <%= activity.end_time.strftime('%I:%M%p') %></div>
-      <div><b><%= activity.name %></b></div>
+      <div><b><%= activity.name %></b> with <%= activity.caretaker %></div>
       <div><%= activity.category %></div>
       <div>at <%= activity.location %></b></div>
     </div>
