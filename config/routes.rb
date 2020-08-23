@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   namespace :parents do
     root :to => "children#index"
-    resources :children, only: [:index, :new, :create, :edit, :update]
+    resources :children, only: [:index, :new, :create, :edit, :update] do
+      resources :weekly_schedules, only: [:index] do
+        resources :daily_schedules, only: [:show]
+      end
+    end
   end
 
   get 'welcome/index'

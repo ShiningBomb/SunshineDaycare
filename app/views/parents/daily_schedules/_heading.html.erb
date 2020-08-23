@@ -1,0 +1,6 @@
+<%= link_to "Back", parents_child_weekly_schedules_path(@child) %>
+<br>
+<h3><%= @program.name %> Schedule for Week <%= @weekly_schedule.start_date.strftime('%Y-%m-%d') %></h3>
+<% if @weekly_schedule.is_published %>
+  <p>Last published on <%= @weekly_schedule.published_at.strftime('%Y-%m-%d at %I:%M%p') %></p>
+<% end %>   

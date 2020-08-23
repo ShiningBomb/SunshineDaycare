@@ -5,8 +5,14 @@
   <% @children.each do |child| %>
     <div class="cardbox cardbox-wide">
       <%= link_to "Edit", edit_parents_child_path(child), class:"btn btn-outline-primary float-right" %>
+      <%= link_to "View Schedule", parents_child_weekly_schedules_path(child), class:"btn btn-primary float-right"%>
       <div><b><%= child.name %></b></div>
       <div>Age <%= child.age %></div>
+      <% if child.program %>
+        <div>Currently enrolled in <%= child.program.name %></div>
+      <% else %>
+        <div>Currently not enrolled in any program</div>
+      <% end %>
     </div>
   <% end %>
 </div>

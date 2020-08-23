@@ -33,6 +33,6 @@ class Parents::ChildrenController < ParentsController
   private
 
   def child_params
-    params.require(:child).permit(:name, :age)
+    params.require(:child).permit(:name, :age, :program_id)
   end
 end

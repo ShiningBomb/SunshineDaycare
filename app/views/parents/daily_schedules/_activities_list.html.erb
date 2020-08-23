@@ -1,0 +1,9 @@
+<h4>Activities</h4>
+<% @daily_schedule.activities.order(:start_time).where.not(id: nil).each do |activity| %>
+    <div class="cardbox cardbox-block">
+      <div><%= activity.start_time.strftime('%I:%M%p') %> - <%= activity.end_time.strftime('%I:%M%p') %></div>
+      <div><b><%= activity.name %></b></div>
+      <div><%= activity.category %></div>
+      <div>at <%= activity.location %></b></div>
+    </div>
+<% end %>

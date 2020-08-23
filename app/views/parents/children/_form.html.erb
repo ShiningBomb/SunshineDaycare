@@ -1,5 +1,6 @@
 <%= simple_form_for [:parents,@child] do |f| %>
   <%= f.input :name %>
   <%= f.input :age %>
+  <%= f.association  :program %>
   <%= f.button :submit, class: 'btn btn-primary'  %>
 <% end %>
