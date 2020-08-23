@@ -1,0 +1,12 @@
+<%= link_to "Add new post", new_caretakers_post_path, class:"btn btn-primary float-right"%>
+<h3>Your posts</h3>
+<hr>
+<div class="clearfix">
+  <% @posts.each do |post| %>
+    <div class="cardbox cardbox-wide">
+      <div><b><%= post.description %></b></div>
+      <div><%= post.created_at %></div>
+    </div>
+  <% end %>
+</div>
+

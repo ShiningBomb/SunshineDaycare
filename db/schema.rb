@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200823164917) do
+ActiveRecord::Schema.define(version: 20200823172852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,10 +30,13 @@ ActiveRecord::Schema.define(version: 20200823164917) do
   create_table "caretakers", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "name"
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_caretakers_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_caretakers_on_reset_password_token", unique: true
   end
 
   create_table "children", force: :cascade do |t|
@@ -67,6 +70,18 @@ ActiveRecord::Schema.define(version: 20200823164917) do
     t.index ["reset_password_token"], name: "index_parents_on_reset_password_token", unique: true
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.string "description"
+    t.bigint "caretaker_id"
+    t.string "picture_file_name"
+    t.string "picture_content_type"
+    t.bigint "picture_file_size"
+    t.datetime "picture_updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["caretaker_id"], name: "index_posts_on_caretaker_id"
+  end
+
   create_table "programs", force: :cascade do |t|
     t.string "name"
     t.integer "from_age"
@@ -89,5 +104,6 @@ ActiveRecord::Schema.define(version: 20200823164917) do
   add_foreign_key "children", "parents"
   add_foreign_key "children", "programs"
   add_foreign_key "daily_schedules", "weekly_schedules"
+  add_foreign_key "posts", "caretakers"
   add_foreign_key "weekly_schedules", "programs"
 end

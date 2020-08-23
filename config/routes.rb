@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   devise_for :caretakers
   namespace :caretakers do
+    root :to => "posts#index"
+    resources :posts, only: [:index, :new, :create, :edit, :update]
   end
 
   post 'manager/programs/:program_id/weekly_schedules/:id/publish', to: 'manager/weekly_schedules#publish', as: 'publish_manager_program_weekly_schedule'

@@ -24,7 +24,7 @@
             </ul>
           </div>
           <ul class="navbar-nav navbar-right">
-            <% if parent_signed_in? %>
+            <% if caretaker_signed_in? %>
               <li class="nav-item">
                 <a class="nav-link" href="#">Logged in as <%= current_caretaker.email %></a>
               </li>
