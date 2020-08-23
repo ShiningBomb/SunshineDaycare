@@ -1,0 +1,12 @@
+<%= link_to "Add new child", new_parents_child_path, class:"btn btn-primary float-right"%>
+<h3>My Children</h3>
+<hr>
+<div class="clearfix">
+  <% @children.each do |child| %>
+    <div class="cardbox cardbox-wide">
+      <%= link_to "Edit", edit_parents_child_path(child), class:"btn btn-outline-primary float-right" %>
+      <div><b><%= child.name %></b></div>
+      <div>Age <%= child.age %></div>
+    </div>
+  <% end %>
+</div>

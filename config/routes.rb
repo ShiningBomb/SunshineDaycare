@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  namespace :parents do
+    root :to => "children#index"
+    resources :children, only: [:index, :new, :create, :edit, :update]
+  end
+
   get 'welcome/index'
 
   devise_for :parents
