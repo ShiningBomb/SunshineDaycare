@@ -1,6 +1,6 @@
 class Caretakers::PostsController < CaretakersController
   def index
-    @posts = current_caretaker.posts
+    @posts = current_caretaker.posts.order("created_at DESC")
   end
 
   def new

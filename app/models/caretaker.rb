@@ -3,4 +3,6 @@ class Caretaker < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable
   has_many :posts
+
+  validates :email, uniqueness: true
 end

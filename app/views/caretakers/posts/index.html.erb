@@ -1,12 +1,16 @@
-<%= link_to "Add new post", new_caretakers_post_path, class:"btn btn-primary float-right"%>
-<h3>Your posts</h3>
-<hr>
-<div class="clearfix">
-  <% @posts.each do |post| %>
-    <div class="cardbox cardbox-wide">
-      <div><b><%= post.description %></b></div>
-      <div><%= post.created_at %></div>
-    </div>
-  <% end %>
-</div>
 
+<div class="container main-container transparent-container">
+    <%= link_to "Add new post", new_caretakers_post_path, class:"btn btn-primary float-right"%>
+    <h3>Your posts</h3>
+    <hr>
+    <div class="clearfix">
+    <% @posts.each do |post| %>
+        <div class="cardbox cardbox-block cardbox-long">
+        <div class="row d-flex justify-content-center"><%= distance_of_time_in_words(post.created_at,DateTime.now) %> ago</div>
+        <div class="row d-flex justify-content-center"><h3><%= post.description %></h3></div>
+        <div class="row d-flex justify-content-center"><%= post.description %></div> <br>
+        <div class="row d-flex justify-content-center"><%= image_tag post.picture.url, class:"img-fluid" %></div>
+        </div>
+    <% end %>
+    </div>
+</div>

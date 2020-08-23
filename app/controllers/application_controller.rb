@@ -3,7 +3,9 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if resource.instance_of? Parent
-      parents_root_path
+      parents_root_path    
+    elsif resource.instance_of? Caretaker
+      caretakers_root_path
     else
       manager_root_path
     end

@@ -33,6 +33,13 @@
     box-shadow: 5px 10px;
  }
 
+ .container.transparent-container{
+   border:none;
+   background-color: transparent;  
+   box-shadow: none;
+   padding: 10px;
+ }
+
  .form-control {  
    border: 3px solid black;
    border-radius: 5px;
@@ -84,6 +91,13 @@
 .cardbox-block {
    width: 100%;
 }
+
+.cardbox.cardbox-long {
+   height: auto;
+   padding: 30px;
+   background-color: #f3d36b;
+}
+
 .cardbox-active {
    background-color: #a771da;
 }

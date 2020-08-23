@@ -4,4 +4,6 @@ class Parent < ApplicationRecord
   devise :database_authenticatable, :registerable
 
   has_many :children
+
+  validates :email, uniqueness: true
 end
