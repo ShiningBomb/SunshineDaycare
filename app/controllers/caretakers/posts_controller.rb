@@ -33,6 +33,6 @@ class Caretakers::PostsController < CaretakersController
   private
 
   def post_params
-    params.require(:post).permit(:description, :picture)
+    params.require(:post).permit(:title, :description, :picture, :activity_id, :child_ids => [])
   end
 end

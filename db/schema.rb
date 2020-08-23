@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200823172852) do
+ActiveRecord::Schema.define(version: 20200823195347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,12 @@ ActiveRecord::Schema.define(version: 20200823172852) do
     t.index ["program_id"], name: "index_children_on_program_id"
   end
 
+  create_table "children_posts", id: false, force: :cascade do |t|
+    t.bigint "child_id", null: false
+    t.bigint "post_id", null: false
+    t.index ["child_id", "post_id"], name: "index_children_posts_on_child_id_and_post_id"
+  end
+
   create_table "daily_schedules", force: :cascade do |t|
     t.datetime "date"
     t.bigint "weekly_schedule_id"
@@ -79,6 +85,9 @@ ActiveRecord::Schema.define(version: 20200823172852) do
     t.datetime "picture_updated_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "title"
+    t.bigint "activity_id"
+    t.index ["activity_id"], name: "index_posts_on_activity_id"
     t.index ["caretaker_id"], name: "index_posts_on_caretaker_id"
   end
 
@@ -104,6 +113,7 @@ ActiveRecord::Schema.define(version: 20200823172852) do
   add_foreign_key "children", "parents"
   add_foreign_key "children", "programs"
   add_foreign_key "daily_schedules", "weekly_schedules"
+  add_foreign_key "posts", "activities"
   add_foreign_key "posts", "caretakers"
   add_foreign_key "weekly_schedules", "programs"
 end

@@ -1,5 +1,8 @@
 <%= simple_form_for [:caretakers,@post] do |f| %>
+  <%= f.input :title %>
   <%= f.input :description %>
   <%= f.input :picture, as: :file %>
+  <%= f.association :activity %> 
+  <%= f.association :children %> 
   <%= f.button :submit, class: 'btn btn-primary'  %>
 <% end %>
