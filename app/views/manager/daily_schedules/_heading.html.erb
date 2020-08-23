@@ -3,5 +3,5 @@
 <%= link_to "Publish", publish_manager_program_weekly_schedule_path(@program, @weekly_schedule), method:'post' , class:"btn btn-primary float-right"%>
 <h3><%= @program.name %> Schedule for Week <%= @weekly_schedule.start_date.strftime('%Y-%m-%d') %></h3>
 <% if @weekly_schedule.is_published %>
-  <p>Last published on <%= @weekly_schedule.published_at.strftime('%Y-%m-%d at %I:%M%p') %></p>
+  <p>Published on <%= @weekly_schedule.published_at.strftime('%Y-%m-%d at %I:%M%p') %></p>
 <% end %>   
