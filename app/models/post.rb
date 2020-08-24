@@ -3,7 +3,15 @@ class Post < ApplicationRecord
   belongs_to :activity
   has_and_belongs_to_many :children
   has_attached_file :picture
-  validates_attachment_content_type :picture, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
+  validates_attachment_content_type :picture, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   validates :title, :description, :presence => true
+
+  after_create :publish
+
+  def publish
+    # is_published = true
+    processor = TimelineProcessor.new
+    processor.process(self)
+  end
 end

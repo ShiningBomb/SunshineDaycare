@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200823202810) do
+ActiveRecord::Schema.define(version: 20200824180303) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,12 +93,23 @@ ActiveRecord::Schema.define(version: 20200823202810) do
     t.index ["caretaker_id"], name: "index_posts_on_caretaker_id"
   end
 
+  create_table "posts_timelines", id: false, force: :cascade do |t|
+    t.bigint "timeline_id", null: false
+    t.bigint "post_id", null: false
+    t.index ["timeline_id", "post_id"], name: "index_posts_timelines_on_timeline_id_and_post_id"
+  end
+
   create_table "programs", force: :cascade do |t|
     t.string "name"
     t.integer "from_age"
     t.integer "to_age"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "timelines", force: :cascade do |t|
+    t.bigint "parent_id"
+    t.index ["parent_id"], name: "index_timelines_on_parent_id"
   end
 
   create_table "weekly_schedules", force: :cascade do |t|
@@ -118,5 +129,6 @@ ActiveRecord::Schema.define(version: 20200823202810) do
   add_foreign_key "daily_schedules", "weekly_schedules"
   add_foreign_key "posts", "activities"
   add_foreign_key "posts", "caretakers"
+  add_foreign_key "timelines", "parents"
   add_foreign_key "weekly_schedules", "programs"
 end
