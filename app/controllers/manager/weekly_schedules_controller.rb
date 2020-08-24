@@ -15,7 +15,7 @@ class Manager::WeeklySchedulesController < ManagerController
 
   def publish
     @program = Program.find(params[:program_id])
-    @weekly_schedule = @program.weekly_schedules.find(params[:id])
+    @weekly_schedule = @program.weekly_schedules.find(params[:weekly_schedule_id])
     @weekly_schedule.publish()
     redirect_to manager_program_weekly_schedules_path(@program)
   end
