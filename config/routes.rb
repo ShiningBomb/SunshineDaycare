@@ -14,6 +14,7 @@ Rails.application.routes.draw do
         resources :daily_schedules, only: [:show]
       end
     end
+    resources :favorite_posts, only: :index
   end
 
   devise_for :caretakers
