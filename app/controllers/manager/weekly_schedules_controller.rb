@@ -1,7 +1,7 @@
 class Manager::WeeklySchedulesController < ManagerController
   def index
     @program = Program.find(params[:program_id])
-    @weekly_schedules = @program.weekly_schedules.order(:start_date).all
+    @weekly_schedules = @program.weekly_schedules.where('start_date > ?', DateTime.now - 7.days).order(:start_date).all
   end
 
   def create
