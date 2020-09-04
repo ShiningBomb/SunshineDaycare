@@ -2,3 +2,56 @@
 <h1>New Post</h1>
 <%= render 'form' %>
 </div>
+
+<script>
+
+$(document).ready(function(){
+  $('#date').change(function(){
+    var date = $(this).val();
+
+        $.ajax({
+            url: "/caretakers/posts/new",
+            method: "GET",
+            dataType: "json",
+            data: {date: date},
+            error: function (xhr, status, error) {
+            console.error('AJAX Error: ' + status + error);
+            },
+            success: function (response) {
+            console.log(response);
+            var activities = response["activities"];
+            $("#activity").empty();
+
+            $("#activity").append('<option> </option>');
+            for(var i=0; i< activities.length; i++){
+                $("#activity").append('<option value="' + activities[i]["id"] + '">' + activities[i]["name"] + '</option>');
+            }
+            }
+        });
+    });
+
+    $('#activity').change(function(){
+     var activity = $(this).val();
+
+        $.ajax({
+            url: "/caretakers/posts/new",
+            method: "GET",
+            dataType: "json",
+            data: {activity: activity},
+            error: function (xhr, status, error) {
+            console.error('AJAX Error: ' + status + error);
+            },
+            success: function (response) {
+            console.log(response);
+            var children = response["children"];
+            $("#child").empty();
+
+            for(var i=0; i< children.length; i++){
+                $("#child").append('<option value="' + children[i]["id"] + '">' + children[i]["name"] + '</option>');
+            }
+            }
+        });
+    });
+});
+
+</script>

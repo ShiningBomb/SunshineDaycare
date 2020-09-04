@@ -2,7 +2,8 @@
   <%= f.input :title %>
   <%= f.input :description %>
   <%= f.input :picture, as: :file %>
-  <%= f.association :activity %> 
-  <%= f.association :children %> 
+  <%= f.input :date, as: :date, html5: true, :input_html => { :id => 'date' } %>
+  <%= f.association :activity, collection: current_caretaker.activities, :input_html => { :id => 'activity' } %> 
+  <%= f.association :children, :input_html => { :id => 'child' }%> 
   <%= f.button :submit, class: 'btn btn-primary'  %>
 <% end %>

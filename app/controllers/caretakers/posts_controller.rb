@@ -5,6 +5,23 @@ class Caretakers::PostsController < CaretakersController
 
   def new
     @post = current_caretaker.posts.new
+
+    if params[:date].present?
+      date = params[:date].to_date()
+      @activities = current_caretaker.activities.joins(:daily_schedule).where('daily_schedules.date' => date.beginning_of_day..date.end_of_day)
+    end
+    if params[:activity].present?
+      activity = current_caretaker.activities.find(params[:activity])
+      @children = activity.daily_schedule.weekly_schedule.program.children
+    end
+
+    if request.xhr?
+      respond_to do |format|
+        format.json {
+          render json: {activities: @activities, children: @children}
+        }
+      end
+    end
   end
 
   def create

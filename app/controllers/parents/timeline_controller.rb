@@ -1,6 +1,6 @@
 class Parents::TimelineController < ParentsController
   def index
-    @posts = current_parent.timeline.posts
+    @posts = current_parent.timeline.posts.order("created_at DESC")
   end
 
   def save

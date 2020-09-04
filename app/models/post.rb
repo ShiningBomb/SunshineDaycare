@@ -9,6 +9,8 @@ class Post < ApplicationRecord
 
   after_create :publish
 
+  attr_accessor :date
+
   def publish
     # is_published = true
     processor = TimelineProcessor.new
