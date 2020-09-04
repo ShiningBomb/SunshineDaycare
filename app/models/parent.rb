@@ -6,6 +6,8 @@ class Parent < ApplicationRecord
   has_many :children
   has_one :timeline
 
+  has_and_belongs_to_many :favorite_posts, :class_name => 'Post', :join_table => :parents_favorite_posts
+
   validates :email, uniqueness: true
   
   after_create :create_timeline

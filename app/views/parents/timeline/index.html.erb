@@ -3,12 +3,18 @@
     <hr>
     <div class="clearfix">
     <% @posts.each do |post| %>
-        <div class="cardbox cardbox-block cardbox-long">    
+        <div class="cardbox cardbox-block cardbox-long">         
         <div class="row d-flex justify-content-center"><%= distance_of_time_in_words(post.created_at,DateTime.now) %> ago by caretaker&nbsp<b><%= post.caretaker %></b>.</div>   
         <div class="row d-flex justify-content-center"><h3><%= post.title %></h3></div>
         <div class="row d-flex justify-content-center"><%= post.description %></div> <br>
         <div class="row d-flex justify-content-center"><%= image_tag post.picture.url, class:"img-fluid" %></div><br>
         <div class="row d-flex justify-content-center">Your child&nbsp<b><%= (post.children & current_parent.children).map(&:name).join(', ') %></b>&nbspis tagged during&nbsp<b><%= post.activity.name %></b>&nbspactivity.</div><br> 
+        
+        <% if current_parent.favorite_posts.include? post%>
+            <%= link_to "Unsave", parents_timeline_save_path(post), class:"btn btn-outline-primary float-right" %>
+        <% else %>
+            <%= link_to "Save", parents_timeline_save_path(post), class:"btn btn-outline-primary float-right" %>
+        <% end %>
         </div>
     <% end %>
     </div>
